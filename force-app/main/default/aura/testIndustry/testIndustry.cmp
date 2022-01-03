@@ -1,0 +1,33 @@
+<aura:component controller="AccountAuraController" access="global" implements="force:appHostable">
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/> 
+    <aura:attribute name="selectedCountryId" type="String" />
+    <aura:attribute name="hasModalOpen" type="boolean" default="false" />
+    
+    <div class="slds-form-element">
+        <label class="slds-form-element__label" for="select-01">Select Country</label>
+        <div class="slds-select_container">
+            <ui:inputSelect label="Industry" class="dynamic" aura:id="InputAccountIndustry" change="{!c.onPicklistChange}"/> 
+            <lightning:inputRichText label="Country" value="{!v.country}" />
+            <lightning:button variant="Success" label="Generate Flag" onclick="{!c.generateFlag}" /> 
+        </div>
+    </div>
+
+    <aura:if isTrue="{!v.hasModalOpen}">
+        <section onclick="{!c.closeModel}"
+                 role="dialog"
+                 aria-modal="true"
+                 class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <div class="slds-modal__content slds-p-around_medium slds-text-align_center"
+                     style="background: transparent;">
+                    <div style="width: 50%; margin: 0 auto; text-align: left">
+                        <!--<lightning:fileCard> to preview file using content document Id -->
+                        <lightning:fileCard fileId="{!v.selectedCountryId}"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+</aura:component>

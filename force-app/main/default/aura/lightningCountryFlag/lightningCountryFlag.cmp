@@ -1,0 +1,48 @@
+<aura:component controller="CountryFlag" implements="flexipage:availableForAllPageTypes" access="global">
+    <aura:attribute name="sObjectName" type="String" />
+    <aura:attribute name="countries" type="String" />
+    <aura:attribute name="GetCountryValue" type="Object" />
+    <aura:handler name="init" action="{!this}" value="{!doInit}"/>
+
+    <!-- <div class="slds-form-element">
+        <label class="slds-form-element__label" for="select-01">Select Country</label>
+        <div class="slds-select_container">
+    <ui:inputSelect aura:id="makeId" multiple="false" label="Countries">
+        <ui:inputSelectOption label="Australia" text="Australia" />
+        <ui:inputSelectOption label="China" text="China" />
+        <ui:inputSelectOption label="Europe" text="Europe" />
+        <ui:inputSelectOption label="France" text="France" />
+        <ui:inputSelectOption label="Italy" text="Italy" />
+        <ui:inputSelectOption label="Japan" text="Japan" />
+        <ui:inputSelectOption label="Russia" text="Russia" />
+        <ui:inputSelectOption label="South Africa" text="South Africa" />
+        <ui:inputSelectOption label="South Korea" text="South Korea" />
+        <ui:inputSelectOption label="USA" text="USA" />
+        <ui:inputSelectOption label="None" text="None" value="true" />
+    </ui:inputSelect>
+    <lightning:inputField fieldName="{!v.countries}" readonly="true" />
+        </div>
+
+    </div> -->
+
+    <!-- <div class="slds-form-element">
+        <label class="slds-form-element__label" for="select-01">Select Country</label>
+        <div class="slds-select_container">
+            <ui:inputSelect label="Country" class="dynamic" aura:id="InputAccountCountry" change="{!c.onPicklistChange}"/> 
+        </div>
+    </div> -->
+   <div class="slds-p-around_large">
+        <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+            <thead>
+                <tr class="slds-text-title_caps">
+                    <th scope="col">
+                        <div class="slds-truncate" title="Country">Country</div>
+                        <ui:inputSelect label="Country" class="dynamic" aura:id="accountCountry" change="{!c.onPicklistChange}" />
+                        <lightning:button variant="Success" label="Generate Flag" onclick="{!c.generateFlag}" /> 
+                    </th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+</aura:component>	
